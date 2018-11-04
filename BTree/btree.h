@@ -3,7 +3,7 @@ template<typename T>
 struct BtreeNode
 {
 	T data;
-	BtreeNode *lchild.*rchild;
+	BtreeNode<T> *lchild.*rchild;
 };
 
 template<class T>
@@ -12,7 +12,9 @@ class BTree
 public:
 	BTree();
 	~BTree();
-	
-private:
+	void InitBtree();
+	BtreeNode<T> *FindNode();
 
+private:
+	BtreeNode<T> *root;
 };
