@@ -1,6 +1,7 @@
-#pragma ones
+#pragma once
 #include <iostream>
 #include <string>
+#include <vector>
 using namespace std;
 
 template<class T> class BtreeNode;
@@ -32,13 +33,14 @@ class BinaryTree
 {
 public:
 	BinaryTree() :root(NULL) {}
-	BinaryTree<T> & PreOrderCreaterTree(const string & treestr);
+
 	void PreOrder()const;
-	T PreOrder(int location)const;
+	char PreOrder(const int location)const;
+	BinaryTree<T> & PreOrderCreaterTree(const string & treestr);
 
 private:
 	void PreOrder(BtreeNode<T> *currentNode)const;
-	T PreOrder(BtreeNode<T> *currentNode, int &location)const;
+	T PreOrder(BtreeNode<T> *currentNode,const string str)const;
 	BtreeNode<T> *PreOrderCreateNode(const char *& treechar);
 	BtreeNode<T> *root;
 };
@@ -66,17 +68,31 @@ inline void BinaryTree<T>::PreOrder() const
 }
 
 template<class T>
-inline T BinaryTree<T>::PreOrder(int location) const
+inline char BinaryTree<T>::PreOrder( int location) const
 {
-	return	PreOrder(root, location);
+	const string str;
+	PreOrder(root, str);
+	const char * temp = str.c_str();
+	while (location>0)
+	{
+		if (*temp=='#')
+		{
+			++temp;
+			continue;
+		}
+		++temp;
+		location++;
+	}
+	return *temp;
 }
+
 
 template<class T>
 inline void BinaryTree<T>::PreOrder(BtreeNode<T>* currentNode) const
 {
 	if (currentNode == NULL)
 	{
-		cout << '#' << endl;
+		//cout << '#' << endl;
 	}
 	else
 	{
@@ -87,10 +103,23 @@ inline void BinaryTree<T>::PreOrder(BtreeNode<T>* currentNode) const
 }
 
 template<class T>
-inline T BinaryTree<T>::PreOrder(BtreeNode<T>* currentNode, int &location) const
+inline T BinaryTree<T>::PreOrder(BtreeNode<T>* currentNode, const string str) const
 {
-	
+	if (currentNode == NULL)
+	{
+		str.append('#');
+	}
+	else
+	{
+		str.append(currentNode->data);
+		PreOrder(currentNode->plchild);
+		PreOrder(currentNode->prchild);
+	}
 }
+
+
+
+
 
 template<class T>
 inline BtreeNode<T>* BinaryTree<T>::PreOrderCreateNode(const char *& treechar)
