@@ -18,9 +18,19 @@ int main() {
 	inputfile >> treestr;
 	BinaryTree<char> btree;
 	btree.PreOrderCreaterTree(treestr);
-	//btree.PreOrder();
-	outputfile << btree.PreOrder(4);
+
+	cout << "PreOrder:" << endl;
+	btree.PreOrder();
+
+	outputfile <<"4th Node in PreOrder:"<< btree.PreOrder(4) << endl;
+	//outputfile << btree.size() << endl;
+	outputfile << "num of leafs:"<<btree.num_leafs() << endl;
 	
+	btree.SwapChildren();
+
+	cout << "PreOrder:" << endl;
+	btree.PreOrder();
+
 	inputfile.close();
 	inputfile.close();
 	system("pause");
