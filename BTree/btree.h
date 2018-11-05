@@ -40,9 +40,15 @@ inline BTree<T>::BTree(T rootdata)
 }
 
 template<class T>
-inline void BTree<T>::InitBtree()
+inline BTree<T>::~BTree()
 {
-	root = new   BtreeNode;
+
+}
+
+template<class T>
+inline void BTree<T >::InitBtree()
+{
+	root = new BtreeNode;
 }
 
 template<class T>
