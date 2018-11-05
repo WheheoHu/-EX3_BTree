@@ -13,25 +13,27 @@ int main() {
 
 	std::vector<char> treedata;
 	char e;
-	int index = 0;
 	while (!inputfile.eof())
 	{
-		
+
 		inputfile >> std::noskipws >> e;
 		if (e == '\n')
 		{
 			break;
 		}
 		treedata.push_back(e);
-		outputfile << treedata[index] << std::endl;
-		index++;
+	}
+	for (int i = 0; i < treedata.size(); i++)
+	{
+		if (treedata[i] == ' ')
+		{
+			outputfile << i + 1 << " empty" << std::endl;
+		}
 	}
 
 
 
 
-
 	inputfile.close();
 	inputfile.close();
-	system("pause");
 }
