@@ -18,8 +18,8 @@ int main() {
 	inputfile >> treestr;
 	BinaryTree<char> btree;
 	btree.PreOrderCreaterTree(treestr);
-	btree.PreOrder();
-	cout << btree.PreOrder(3);
+	//btree.PreOrder();
+	outputfile << btree.PreOrder(3);
 	
 	inputfile.close();
 	inputfile.close();
