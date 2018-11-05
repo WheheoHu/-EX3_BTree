@@ -13,15 +13,15 @@ int main() {
 	inputfile.open("input", std::ios::in);
 	outputfile.open("output", std::ios::out);
 
-
-	string e;
-	inputfile >> e;
-
-
+	//½¨Á¢¶þ²æÊ÷
+	string treestr;
+	inputfile >> treestr;
 	BinaryTree<char> btree;
-	btree.PreOrderCreaterTree(e);
-	outputfile << e;
+	btree.PreOrderCreaterTree(treestr);
+	//btree.PreOrder();
+	outputfile << btree.PreOrder(4);
 	
 	inputfile.close();
 	inputfile.close();
+	system("pause");
 }

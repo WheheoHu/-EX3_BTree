@@ -26,14 +26,19 @@ inline T BtreeNode<T>::getData() const
 }
 
 
-//¶þ²æÊ÷  
+//¶þ²æÊ÷Àà
 template<class T>
 class BinaryTree
 {
 public:
-	BinaryTree():root(NULL){}
+	BinaryTree() :root(NULL) {}
 	BinaryTree<T> & PreOrderCreaterTree(const string & treestr);
+	void PreOrder()const;
+	T PreOrder(int location)const;
+
 private:
+	void PreOrder(BtreeNode<T> *currentNode)const;
+	T PreOrder(BtreeNode<T> *currentNode, int &location)const;
 	BtreeNode<T> *PreOrderCreateNode(const char *& treechar);
 	BtreeNode<T> *root;
 };
@@ -42,7 +47,7 @@ template<class T>
 inline BinaryTree<T>& BinaryTree<T>::PreOrderCreaterTree(const string & treestr)
 {
 	const char * treechar = treestr.c_str();
-	if (*treechar!='#')
+	if (*treechar != '#')
 	{
 		root = PreOrderCreateNode(treechar);
 	}
@@ -55,9 +60,42 @@ inline BinaryTree<T>& BinaryTree<T>::PreOrderCreaterTree(const string & treestr)
 }
 
 template<class T>
+inline void BinaryTree<T>::PreOrder() const
+{
+	PreOrder(root);
+}
+
+template<class T>
+inline T BinaryTree<T>::PreOrder(int location) const
+{
+	return	PreOrder(root, location);
+}
+
+template<class T>
+inline void BinaryTree<T>::PreOrder(BtreeNode<T>* currentNode) const
+{
+	if (currentNode == NULL)
+	{
+		cout << '#' << endl;
+	}
+	else
+	{
+		cout << currentNode->data << endl;
+		PreOrder(currentNode->plchild);
+		PreOrder(currentNode->prchild);
+	}
+}
+
+template<class T>
+inline T BinaryTree<T>::PreOrder(BtreeNode<T>* currentNode, int &location) const
+{
+	
+}
+
+template<class T>
 inline BtreeNode<T>* BinaryTree<T>::PreOrderCreateNode(const char *& treechar)
 {
-	if (*treechar=='#'||*treechar=='\n')
+	if (*treechar == '#' || *treechar == '\n')
 	{
 		return NULL;
 	}
