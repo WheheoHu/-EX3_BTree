@@ -16,6 +16,10 @@ int main() {
 
 	string e;
 	inputfile >> e;
+
+
+	BinaryTree<char> btree;
+	btree.PreOrderCreaterTree(e);
 	outputfile << e;
 	
 	inputfile.close();
