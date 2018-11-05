@@ -1,96 +1,32 @@
-#pragma once
-#include<iostream>
-#include<vector>
+#pragma ones
+#include <iostream>
+#include <string>
+using namespace std;
 
+template<class T> class BtreeNode;
+template<class T> class BinaryTree;
 
-template<typename T>
-struct BtreeNode
-{
-	T data;
-	BtreeNode<T> *lchild, *rchild;
-	BtreeNode(const T &d) :data(d), lchild(NULL), rchild(NULL) {}
-};
 
 template<class T>
-class BTree
+class BtreeNode
 {
 public:
-	BTree();
-	BTree(T rootdata);
-	~BTree();
-	void InitBtree();
-	void InitBtree(T rootdata);
-	BtreeNode<T> *FindNode(T data_find);
-	void CreateTree();
-	bool isEmpty();
+	friend class BinaryTree<T>;
+	BtreeNode() :plchild(NULL), prchild(NULL){}
+	BtreeNode(T d) :data(d), plchild(NULL), prchild(NULL){}
 
 private:
-	BtreeNode<T> *root;
+	BtreeNode<T> *plchild, *prchild;
+	T data;
 };
 
 template<class T>
-inline BTree<T>::BTree()
+class BinaryTree
 {
-	std::cout << "please use InitBtree to Init" << std::endl;
-}
+public:
+	BinaryTree();
+	~BinaryTree();
 
-template<class T>
-inline BTree<T>::BTree(T rootdata)
-{
-	InitBtree(rootdata);
-}
+private:
 
-template<class T>
-inline BTree<T>::~BTree()
-{
-
-}
-
-template<class T>
-inline void BTree<T >::InitBtree()
-{
-	root = new BtreeNode;
-}
-
-template<class T>
-inline void BTree<T>::InitBtree(T rootdata)
-{
-	root = new BtreeNode(rootdata);
-}
-
-template<class T>
-inline BtreeNode<T>* BTree<T>::FindNode(T data_find)
-{
-	if (isEmpty())
-	{
-		return NULL;
-	}
-	else
-	{
-		BtreeNode<T> *p = root;
-		if (p->data == data_find)
-		{
-			return p;
-		}
-		FindNode(p->lchild);
-		FindNode(p->rchild);
-	}
-
-}
-
-template<class T>
-inline void BTree<T>::CreateTree()
-{
-
-
-}
-
-template<class T>
-inline bool BTree<T>::isEmpty()
-{
-	if (root == NULL)
-	{
-		return true;
-	}
-	return false;
-}
+};
