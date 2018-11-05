@@ -19,7 +19,7 @@ int main() {
 	BinaryTree<char> btree;
 	btree.PreOrderCreaterTree(treestr);
 	//btree.PreOrder();
-	outputfile << btree.PreOrder(3);
+	outputfile << btree.PreOrder(4);
 	
 	inputfile.close();
 	inputfile.close();

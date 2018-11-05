@@ -40,7 +40,7 @@ public:
 
 private:
 	void PreOrder(BtreeNode<T> *currentNode)const;
-	T PreOrder(BtreeNode<T> *currentNode,int location,int &count)const;
+	void PreOrder(BtreeNode<T> *currentNode,int location,int &count,T &elem)const;
 
 	BtreeNode<T> *PreOrderCreateNode(const char *& treechar);
 	BtreeNode<T> *root;
@@ -71,8 +71,10 @@ inline void BinaryTree<T>::PreOrder() const
 template<class T>
 inline T BinaryTree<T>::PreOrder(int location) const
 {
-	int count = 0;
-	return PreOrder(root, location, count);
+	int count = 1;
+	T elem;
+	PreOrder(root, location, count, elem);
+	return elem;
 }
 
 template<class T>
@@ -91,7 +93,7 @@ inline void BinaryTree<T>::PreOrder(BtreeNode<T>* currentNode) const
 }
 
 template<class T>
-inline T BinaryTree<T>::PreOrder(BtreeNode<T>* currentNode, int location, int & count) const
+inline void BinaryTree<T>::PreOrder(BtreeNode<T>* currentNode, int location, int &count,T & elem) const
 {
 	if (currentNode == NULL)
 	{
@@ -99,21 +101,21 @@ inline T BinaryTree<T>::PreOrder(BtreeNode<T>* currentNode, int location, int & 
 	}
 	else
 	{
-		
+
 		if (count == location)
 		{
-			count++;
-			return currentNode->data;
-			
-			
+			elem = currentNode->data;
+
 		}
 		count++;
 		cout << currentNode->data << endl;
-		PreOrder(currentNode->plchild,location,count);
-		PreOrder(currentNode->prchild, location, count);
-		
+		PreOrder(currentNode->plchild, location, count,elem);
+		PreOrder(currentNode->prchild, location, count,elem);
+
 	}
 }
+
+
 
 
 template<class T>
