@@ -3,7 +3,7 @@ template<typename T>
 struct BtreeNode
 {
 	T data;
-	BtreeNode<T> *lchild.*rchild;
+	BtreeNode<T> *lchild,*rchild;
 };
 
 template<class T>

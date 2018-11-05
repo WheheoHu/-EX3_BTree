@@ -7,7 +7,17 @@
 #include <fstream>
 
 int main() {
+	std::fstream inputfile, outputfile;
+	inputfile.open("input", std::ios::in);
+	outputfile.open("output", std::ios::out);
+
+	int e;
+	inputfile >> e;
+	outputfile << e;
 
 
 
+
+	inputfile.close();
+	inputfile.close();
 }
