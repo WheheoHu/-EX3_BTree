@@ -21,6 +21,7 @@ public:
 	void InitBtree();
 	void InitBtree(T rootdata);
 	BtreeNode<T> *FindNode(T data_find);
+	void CreateTree();
 	bool isEmpty();
 
 private:
@@ -69,11 +70,18 @@ inline BtreeNode<T>* BTree<T>::FindNode(T data_find)
 		BtreeNode<T> *p = root;
 		if (p->data == data_find)
 		{
-			return p
+			return p;
 		}
 		FindNode(p->lchild);
 		FindNode(p->rchild);
 	}
+
+}
+
+template<class T>
+inline void BTree<T>::CreateTree()
+{
+
 
 }
 
