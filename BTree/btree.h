@@ -43,13 +43,12 @@ public:
 private:
 	void PreOrder(BtreeNode<T> *currentNode)const;
 	void PreOrder(BtreeNode<T> *currentNode, int location, int &count, T &elem)const;
-
 	BtreeNode<T> *PreOrderCreateNode(const char *& treechar);
 	int size(const BtreeNode<T> *sroot)const;
-	BtreeNode<T> *root;
 	void num_leafs(const BtreeNode<T> *sroot, int &leaf_num)const;
-
 	void SwapChildren(BtreeNode<T> *currentNode)const;
+private:
+	BtreeNode<T> *root;
 };
 
 template<class T>
