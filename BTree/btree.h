@@ -33,7 +33,6 @@ class BinaryTree
 {
 public:
 	BinaryTree() :root(NULL) {}
-
 	void PreOrder()const;
 	T PreOrder(int location)const;
 	BinaryTree<T> & PreOrderCreaterTree(const string & treestr);
